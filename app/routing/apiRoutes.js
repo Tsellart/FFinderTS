@@ -49,7 +49,11 @@ apirouter.post("/api/friends", function(req,res) {
     var differences = [];
 
     for(var i=0; i < friends.length; i++) {
-        currentResults.push(difference(newFriendResults[i]['scores[]']));
+        currentResults.push(results(friends[i]['scores[]']));
+    }
+
+    for(var i=0; i < currentResults.length; i++) {
+        differences.push(difference(newFriendResults, currentResults[i]));
     }
 
     var worseFriend = minimumDiff(differences);
