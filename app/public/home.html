@@ -160,7 +160,6 @@
         </div>
         <div class="modal-body">
           <h2 id="match-name"></h2>
-          <img id="match-img" height="200" alt="https://static.pexels.com/photos/20787/pexels-photo.jpg">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -212,7 +211,6 @@
                 console.log(res);
                 alert("Info added!");
                 $("#match-name").text(res.name);
-                $("#match-img").attr("src", res.photo);
                 $("#results-modal").modal("toggle"); 
               }
             })
@@ -220,7 +218,6 @@
                 console.log(res);
                 alert("Info added!");
                 $("#match-name").text(res.name);
-                $("#match-img").attr("src", res.photo);
             });
             }
                 else{

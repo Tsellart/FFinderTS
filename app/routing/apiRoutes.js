@@ -5,6 +5,7 @@ var apirouter = express.Router();
 
 apirouter.get("/api/friends", function(req,res) {
     res.json(friends);
+    console.log(friends);
 })
 
 apirouter.post("/api/friends", function(req,res) {
