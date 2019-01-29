@@ -14,7 +14,7 @@ var htmlrouter = require ("./app/routing/htmlRoutes");
 app.use(apirouter);
 app.use(htmlrouter);
 
-app/ListeningStateChangedEvent(PORT, function() {
+app.listen(PORT, function() {
     console.log("Listening for PORT : " + PORT);
 
 });
