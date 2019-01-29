@@ -1,4 +1,4 @@
-var friends = require("../data/friends");
+var friends = require("../data/friends.js");
 var express = require("express");
 var bodyParser = require("body-parser");
 var apirouter = express.Router();
