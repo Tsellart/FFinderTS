@@ -1,39 +1,27 @@
 {
-  "name": "my-app",
-  "version": "0.1.0",
-  "private": true,
+  "name": "FFinderTS",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
   "dependencies": {
-    "auth0-js": "^9.9.1",
-    "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
-    "i": "^0.3.6",
-    "localhost": "^0.2.3",
-    "materialize": "^1.0.0",
-    "mongoose": "^5.4.3",
-    "morgan": "^1.9.1",
-    "passport": "^0.4.0",
-    "passport-local": "^1.0.0",
-    "path": "^0.12.7",
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0",
-    "react-materialize": "^2.6.0",
-    "react-router-dom": "^4.3.1",
-    "react-scripts": "2.1.3"
+    "path": "^0.12.7"
   },
+  "devDependencies": {},
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tsellart/FFinderTS.git"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tsellart/FFinderTS/issues"
+  },
+  "homepage": "https://github.com/Tsellart/FFinderTS#readme"
 }
