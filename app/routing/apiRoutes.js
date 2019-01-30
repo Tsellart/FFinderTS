@@ -17,7 +17,8 @@ apirouter.post("/api/friends", function(req,res) {
         var newScore = [];
         for (var i = 0; i < array.length; i++) {
             newScore.push(parseInt(array[i]));
-        } return newScore;
+        } 
+        return newScore;
     }
 
     var totalDiff = function(arrayA, arrayB){
