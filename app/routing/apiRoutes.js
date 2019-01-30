@@ -1,68 +1,34 @@
 var friends = require("../data/friends.js");
-var express = require("express");
-var bodyParser = require("body-parser");
-var apirouter = express.Router();
+var path = require("path");
 
-apirouter.get("/api/friends", function(req,res) {
-    res.json(friends);
-})
+module.exports = function app {
+    app.get('/api/friends', function(req, res) {
+        res.json(friends);
+    });
 
-apirouter.post("/api/friends", function(req,res) {
-    console.log("post");
-    var newFriend = req.body;
-    console.log(newFriend);
+    app.post('/api/friends', function (req, res) {
+        var newFriend = req.body;
+        var userResponses = newFriend.scores;
 
-    var newScore = function(array) {
-        var newScore = [];
-        for (var i = 0; i < array.length; i++) {
-            newScore.push(parseInt(array[i]));
-        } return newScore;
-    }
+        var matchName = '';
+        var totalDiff = 1000;
 
-    var totalDiff = function(arrayA, arrayB){
-        delta = 0;
-        for(var i=0; i < arrayA.length; i++) {
-            delta += Math.abs(arrayA[i] - arrayB[i]);
-        }
-        return delta;
-    }
+        for (var i = 0; i < friends.length; i++) {
+            var diff = 0;
+            for (var j= 0; j < userResponses.length; i++) {
+                diff += Math.abs(friends[i].scores[j] - userResponses[j]);
+            }
 
-    function minimumDiff(array) {
-        if (array.length === 0) {
-            return -1;
-        }
-
-        var min = array[0];
-        var minIndex = 0;
-
-        for (var i = 1; i < array.length; i++) {
-            if (array[i] < min) {
-                minIndex = i;
-                min = array[i];
+            if (diff < totalDiff) {
+                totalDiff = diff;
+                matchName = friends[i].name;
             }
         }
 
-        return minIndex;
-    }
+        friends.push(newFriend);
 
-    var newFriendResults = newScore(newFriend['score[]']);
-    var currentResults = [];
-    var differences = [];
+        res.josn({status: 'OK', matchName: matchName});
 
-    for(var i=0; i < friends.length; i++) {
-        currentResults.push(newScore(friends[i]['scores[]']));
-    }
+    });
+};
 
-    for(var i=0; i < currentResults.length; i++) {
-        differences.push(totalDiff(newFriendResults, currentResults[i]));
-    }
-
-    var worseFriend = minimumDiff(differences);
-    var perfectFriend = friends[worseFriend];
-    console.log(perfectFriend);
-
-    friends.push(newFriend);
-    res.json(perfectFriend);
-})
-
-module.exports = apirouter;
