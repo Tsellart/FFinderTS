@@ -202,10 +202,7 @@
                 scores: score
                 };
             console.log(newFriend);
-            $.ajax({
-              type: "POST",
-              data: newFriend,
-              url: "/api/friends",
+            $.post('/api/friends', newFriend)
               success: function(res){
                 console.log(res);
                 alert("Info added!");
