@@ -1,7 +1,7 @@
-var selfArray = [
+var friendsArray = [
 	{
-	  "name":"Tim",
-	  "scores[]":[
+	  name: "Tim",
+	  scores:[
 	      4,
 	      4,
 	      5,
@@ -17,4 +17,4 @@ var selfArray = [
 ];
 
 
-module.exports = selfArray;
+module.exports = friendsArray;
