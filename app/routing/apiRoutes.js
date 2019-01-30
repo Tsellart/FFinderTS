@@ -1,7 +1,8 @@
 var friends = require("../data/friends.js");
 var express = require("express");
 var apirouter = express.Router();
-
+var path = require("path");
+var bodyParser = require("body-parser");
 
 apirouter.get("/api/friends", function(req,res) {
     res.json(friends);
