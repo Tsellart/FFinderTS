@@ -213,11 +213,6 @@
                 $("#results-modal").modal("toggle"); 
               }
             })
-            $.post("/api/friends", newFriend, function(res){
-                console.log(res);
-                alert("Info added!");
-                $("#match-name").text(res.name);
-            });
             }
                 else{
                     alert("Form not filled out");
