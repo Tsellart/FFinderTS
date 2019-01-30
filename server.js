@@ -8,8 +8,8 @@ var PORT = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-var apiroutes = require ("./app/routing/apiRoutes");
-var htmlroutes = require ("./app/routing/htmlRoutes");
+var apiroutes = require ("./app/routing/apiRoutes.js");
+var htmlroutes = require ("./app/routing/htmlRoutes.js");
 
 app.use(apiroutes);
 app.use(htmlroutes);
