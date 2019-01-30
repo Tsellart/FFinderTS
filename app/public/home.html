@@ -203,13 +203,13 @@
                 };
             console.log(newFriend);
             $.post('/api/friends', newFriend)
-              success: function(res){
-                console.log(res);
+              .done(function(data) {
+                console.log(data);
                 alert("Info added!");
                 $("#match-name").text(res.name);
                 $("#results-modal").modal("toggle"); 
-              }
-            })
+              })
+
             }
                 else{
                     alert("Form not filled out");
