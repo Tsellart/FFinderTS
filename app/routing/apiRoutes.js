@@ -5,21 +5,21 @@ var apirouter = express.Router();
 
 apirouter.get("/api/friends", function(req,res) {
     res.json(friends);
-    console.log(friends);
 })
 
 apirouter.post("/api/friends", function(req,res) {
     console.log("post");
     var newFriend = req.body;
     console.log(newFriend);
-    var results = function(array) {
-        var results = [];
+
+    var newScore = function(array) {
+        var newScore = [];
         for (var i = 0; i < array.length; i++) {
-            results.push(parseInt(array[i]));
-        } return results;
+            newScore.push(parseInt(array[i]));
+        } return newScore;
     }
 
-    var difference = function(arrayA, arrayB){
+    var totalDiff = function(arrayA, arrayB){
         delta = 0;
         for(var i=0; i < arrayA.length; i++) {
             delta += Math.abs(arrayA[i] - arrayB[i]);
@@ -45,16 +45,16 @@ apirouter.post("/api/friends", function(req,res) {
         return minIndex;
     }
 
-    var newFriendResults = results(newFriend['score[]']);
+    var newFriendResults = newScore(newFriend['score[]']);
     var currentResults = [];
     var differences = [];
 
     for(var i=0; i < friends.length; i++) {
-        currentResults.push(results(friends[i]['scores[]']));
+        currentResults.push(newScore(friends[i]['scores[]']));
     }
 
     for(var i=0; i < currentResults.length; i++) {
-        differences.push(difference(newFriendResults, currentResults[i]));
+        differences.push(totalDiff(newFriendResults, currentResults[i]));
     }
 
     var worseFriend = minimumDiff(differences);
