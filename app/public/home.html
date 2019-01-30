@@ -202,14 +202,17 @@
                 scores: score
                 };
             console.log(newFriend);
-            $.post('/api/friends', newFriend)
-              .done(function(data) {
-                console.log(data);
+            $.ajax({
+              type: "POST",
+              data: newFriend,
+              url: "/api/friends",
+              success: function(res){
+                console.log(res);
                 alert("Info added!");
                 $("#match-name").text(res.name);
                 $("#results-modal").modal("toggle"); 
-              })
-
+              }
+            })
             }
                 else{
                     alert("Form not filled out");
