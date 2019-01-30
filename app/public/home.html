@@ -171,22 +171,6 @@
   <script type="text/javascript">
     $("#submit").on("click", function(event) {
         event.preventDefault();
-        function validate(){
-          var isValid = true;
-          $(".form-control").each(function(){
-            if($(this).val() === "" || $(this).val() === null){
-              isValid = false;
-            }
-          });
-          $(".chosen-select").each(function(){
-            if($(this).val() === null || $(this).val() === ""){
-              isValid = false;
-            }
-          })
-          return isValid;
-        }
-        
-        if(validate()){
             var score = [$("#q1").val().trim(), 
             $("#q2").val().trim(), 
             $("#q3").val().trim(), 
@@ -202,22 +186,12 @@
                 scores: score
                 };
             console.log(newFriend);
-            $.ajax({
-              type: "POST",
-              data: newFriend,
-              url: "/api/friends",
-              success: function(res){
-                console.log(res);
-                alert("Info added!");
-                $("#match-name").text(res.name);
-                $("#results-modal").modal("toggle"); 
-              }
+            $.post('/api/friends', newFriend)
+            .done(function(data) {
+              $("#match-name").text(res.name);
+              $("#results-modal").modal("toggle");
             })
-            }
-                else{
-                    alert("Form not filled out");
-                }
-            });
+     });
   </script>
 
 </body>
